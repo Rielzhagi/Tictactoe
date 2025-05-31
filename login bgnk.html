@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>masuk oy!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/brands.min.css">
+    
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <svg viewBox="0 0 800 600" width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:-1;">
+        <!-- Sky Gradient -->
+        <defs>
+            <radialGradient id="sky" cx="50%" cy="30%" r="80%">
+                <stop offset="0%" stop-color="#e0f7fa" />
+                <stop offset="100%" stop-color="#b2ebf2" />
+            </radialGradient>
+            <!-- Bokeh circles -->
+            <filter id="bokeh" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+            <!-- Waterfall gradient -->
+            <linearGradient id="waterfall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#b3e5fc" />
+                <stop offset="100%" stop-color="#81d4fa" />
+            </linearGradient>
+        </defs>
+        <!-- Sky -->
+        <rect x="0" y="0" width="800" height="600" fill="url(#sky)" />
+        <!-- Bokeh circles -->
+        <circle cx="120" cy="100" r="32" fill="#fff" opacity="0.25" filter="url(#bokeh)"/>
+        <circle cx="700" cy="80" r="24" fill="#fff" opacity="0.18" filter="url(#bokeh)"/>
+        <circle cx="400" cy="60" r="18" fill="#fff" opacity="0.15" filter="url(#bokeh)"/>
+        <circle cx="600" cy="200" r="20" fill="#fff" opacity="0.13" filter="url(#bokeh)"/>
+        <!-- Mountains -->
+        <polygon points="0,500 200,250 400,500" fill="#b0bec5"/>
+        <polygon points="200,500 400,200 600,500" fill="#90a4ae"/>
+        <polygon points="400,500 600,300 800,500" fill="#78909c"/>
+        <!-- Snow caps -->
+        <polygon points="190,270 200,250 210,270 200,260" fill="#fff"/>
+        <polygon points="390,220 400,200 410,220 400,210" fill="#fff"/>
+        <polygon points="590,320 600,300 610,320 600,310" fill="#fff"/>
+        <!-- Waterfall -->
+        <rect x="370" y="260" width="60" height="180" fill="url(#waterfall)" opacity="0.85">
+            <animate attributeName="y" values="260;270;260" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="height" values="180;170;180" dur="2s" repeatCount="indefinite"/>
+        </rect>
+        <!-- Waterfall splash -->
+        <ellipse cx="400" cy="440" rx="40" ry="10" fill="#b3e5fc" opacity="0.7">
+            <animate attributeName="rx" values="40;50;40" dur="2s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Grass foreground -->
+        <ellipse cx="400" cy="540" rx="420" ry="80" fill="#a5d6a7"/>
+        <!-- Bunny (left) -->
+        <g id="bunny" style="transform:translateY(0px);">
+            <ellipse id="bunny-body" cx="120" cy="520" rx="18" ry="12" fill="#fff"/>
+            <ellipse cx="110" cy="510" rx="4" ry="10" fill="#fff"/>
+            <ellipse cx="130" cy="510" rx="4" ry="10" fill="#fff"/>
+            <circle cx="126" cy="518" r="2" fill="#f8bbd0"/>
+            <ellipse cx="118" cy="518" rx="2" ry="1" fill="#333"/>
+        </g>
+        <!-- Fox (right) -->
+        <g id="fox">
+            <ellipse cx="680" cy="530" rx="16" ry="10" fill="#ffcc80"/>
+            <ellipse cx="670" cy="520" rx="3" ry="7" fill="#ffcc80"/>
+            <ellipse cx="690" cy="520" rx="3" ry="7" fill="#ffcc80"/>
+            <polygon points="665,515 670,510 675,515" fill="#ffb300"/>
+            <polygon points="685,515 690,510 695,515" fill="#ffb300"/>
+            <ellipse cx="684" cy="532" rx="2" ry="1" fill="#333"/>
+        </g>
+        <!-- Bird (flying) -->
+        <g id="bird">
+            <ellipse cx="300" cy="180" rx="8" ry="4" fill="#90caf9"/>
+            <path d="M292 180 Q300 170 308 180" stroke="#1976d2" stroke-width="2" fill="none"/>
+        </g>
+    </svg>
+    </div>
+    <!-- isi pesan -->
+    <div class="container">
+        <div class="box">
+            <h1>Welcome Brokk 👾</h1>
+            <p style="font-style:italic;">👇Sok atuhh Login dimarih👇</p>
+            <form id="loginForm">
+                <label for="username">Username :</label>
+                <input type="text" id="username" name="username" required autocomplete="off">
+                <label for="username">Password :</label>
+                <input type="password" id="password" name="password" required autocomplete="off">
+
+                <button type="submit" >Login </button>
+             
+            </form>
+            <p id="message" style="color: red; margin-top: 10px;"></p>
+            <p>Belum punya akun? <span style="color: red ;">Tanya  Dariel aja biar bisa login 👾</span></p>
+        </div>
+    </div>
+    <style>
+        body {
+            background: linear-gradient(135deg, #b2f0ff 0%, #b2f0ff 100%);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .box {
+            background: #b2f0ff;
+            padding: 32px 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            text-align: center;
+            min-width: 320px;
+        }
+        h1 {
+            color: #ef5cc0;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin: 18px 0 6px 0;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid b2f0ff(198, 75%, 62%);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            background: #b2f0ff;
+        }
+        button {
+            background: #ef5cc0;
+            color: #fff;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 16px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #b2f0ff;
+            color: #b2f0ff;
+        }
+    </style>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim().toLowerCase();
+            const password = document.getElementById('password').value.trim();
+            const message = document.getElementById('message');
+            if(username === 'Maduscha','maduscha','Dariel I.P' && password === 'ScMaduscha','Riel23') {
+                message.style.color = 'green';
+                message.textContent = 'NICE-Berhasil Login';
+                setTimeout(() => {
+                    window.location.href = 'Riel.html';
+                }, 1500);
+            } else {
+                message.style.color = 'red';
+                message.textContent = 'Ups! Nama atau password salah. Coba lagi ya, Brokk';
+            }
+        });
+    </script>
+</body>
+</html>
